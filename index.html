@@ -42,4 +42,5 @@ $('profileForm').addEventListener('submit',async e=>{e.preventDefault();if(!db)r
 $('logoutBtn').onclick=async()=>{if(db){const {error}=await db.auth.signOut();if(error){alert(friendlyError(error));return;}}showLanding();};
 if(db){db.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){showAuth('login');message('authMessage','Choisissez votre nouveau mot de passe après avoir ouvert le lien reçu par e-mail.','success');$('password').autocomplete='new-password';}else if(session&&event==='SIGNED_IN'){renderDashboard(session.user);}else if(!session&&(event==='SIGNED_OUT'||event==='INITIAL_SESSION')){showLanding();}});db.auth.getSession().then(({data})=>{if(data.session)renderDashboard(data.session.user);});}else{console.info('SKOOCHY CARD: ajoutez la clé publique Supabase dans SUPABASE_ANON_KEY pour activer Auth.');}
 </script>
-</body></html>
+</body>
+</html>
