@@ -233,4 +233,6 @@ if(supabaseClient){
   supabaseClient.auth.getSession().then(({data})=>{const user=data?.session?.user;if(user?.email_confirmed_at)showDashboard(user)});
   supabaseClient.auth.onAuthStateChange((event,session)=>{const user=session?.user;if(user?.email_confirmed_at&&(event==="SIGNED_IN"||event==="TOKEN_REFRESHED"||event==="INITIAL_SESSION"))showDashboard(user)});
 }
-</script></body></html>
+</script>
+</body>
+</html>
